@@ -5,7 +5,7 @@ import { ErrorMessage, Field } from "formik";
 
 // Variant
 const inputVariant = cva(
-  " w-full lg:h-[40px] h-[32px] text-slate-900 text-center lg:text-base text-sm lg:border-2 border border-slate-600 rounded-md"
+  " w-full lg:h-[40px] h-[32px] text-slate-900 text-center lg:text-[20px] text-[16px] lg:border-2 border border-slate-600 rounded-md"
 );
 
 // Interface

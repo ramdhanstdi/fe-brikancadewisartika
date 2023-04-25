@@ -37,13 +37,26 @@ function LocationMarker() {
     },
   });
 
+  const handleDragEnd = (e) => {
+    const center = e.target.getLatLng();
+    setPosition(center);
+    setNewLat(center.lat);
+    setNewLng(center.lng);
+    console.log(center);
+  };
+
   const customIcon = new Icon({
     iconSize: [30, 45],
     iconUrl: "./images/location.png",
   });
 
   return position === null ? null : (
-    <Marker position={[newLat, newLng]} icon={customIcon}>
+    <Marker
+      position={[newLat, newLng]}
+      draggable
+      eventHandlers={{ dragend: handleDragEnd }}
+      icon={customIcon}
+    >
       <Popup>You are here</Popup>
     </Marker>
   );

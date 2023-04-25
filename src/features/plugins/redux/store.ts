@@ -8,7 +8,6 @@ import { combined } from "./reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: "auth",
 };
 
 const persistedReducers = persistReducer(persistConfig, combined);
