@@ -15,3 +15,8 @@
 .grid-template {
     @apply grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-[32px];
 }
+
+.leaflet-container {
+    height: 60vh;
+    z-index: 1;
+  }

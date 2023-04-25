@@ -16,9 +16,13 @@ const AppMainLayout: FC<AppMainLayoutProps> = ({ children }) => {
         <Navbar onMenuButtonClick={() => setShowSideBar((prev) => !prev)} />
       </div>
 
-      <div className="grid md:grid-cols-6 ">
-        <Sidebar open={showSideBar} />
-        <div className="mt-20">{children}</div>
+      <div className="grid-template">
+        <div className="md:col-span-2 ">
+          <Sidebar open={showSideBar} />
+        </div>
+        <div className="mt-20 lg:col-span-10 md:col-span-6 col-span-4 ">
+          {children}
+        </div>
       </div>
     </div>
   );

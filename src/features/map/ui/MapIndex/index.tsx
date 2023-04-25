@@ -1,5 +1,9 @@
 "use client";
+
+// React
 import { FC, useState } from "react";
+
+// Leaf Css
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 
@@ -45,7 +49,7 @@ function LocationMarker() {
   );
 }
 
-const HomeIndex: FC = () => {
+const MapIndex: FC = () => {
   return (
     <div className="w-full flex justify-center items-center">
       <div className="lg:w-[1000px] md:w-[700px] w-[400px] ">
@@ -65,4 +69,4 @@ const HomeIndex: FC = () => {
   );
 };
 
-export default HomeIndex;
+export default MapIndex;

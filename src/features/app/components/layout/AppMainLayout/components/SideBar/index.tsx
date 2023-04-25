@@ -12,21 +12,25 @@ const Sidebar = ({ open, setOpen }: Props) => {
         open ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <nav className="md:sticky top-0 md:top-16">
+      <nav className="md:sticky top-0 md:top-16 mt-2">
         {/* nav items */}
-        <div className="py-2 flex flex-col gap-2">
-          <AppBaseLabel
-            size={"md"}
-            className="hover:bg-indigo-200 p-2 hover:text-indigo-900"
-          >
-            <Link href="/map">Map</Link>
-          </AppBaseLabel>
-          <AppBaseLabel
-            size={"md"}
-            className="hover:bg-indigo-200 p-2 hover:text-indigo-900"
-          >
-            <Link href="/List">List</Link>
-          </AppBaseLabel>
+        <div className="py-2 flex flex-col gap-4 mt-4 p-4">
+          <Link href="/map">
+            <AppBaseLabel
+              size={"md"}
+              className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+            >
+              Map
+            </AppBaseLabel>
+          </Link>
+          <Link href="/List">
+            <AppBaseLabel
+              size={"md"}
+              className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+            >
+              List
+            </AppBaseLabel>
+          </Link>
         </div>
       </nav>
     </div>
