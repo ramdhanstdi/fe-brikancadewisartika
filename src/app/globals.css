@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.confirm{
+    @apply bg-green-500 hover:bg-green-700 active:bg-green-800 text-white font-bold py-2 px-4 rounded transition duration-150 ease-in-out transform active:opacity-70 active:outline-none active:outline-green-700
+}
+.declined{
+    @apply bg-red-500 hover:bg-red-700 active:bg-red-800 text-white font-bold py-2 px-4 rounded transition duration-150 ease-in-out transform active:opacity-70 active:outline-none active:outline-red-700
+}
+.natural{
+    @apply bg-yellow-500 hover:bg-yellow-700 active:bg-yellow-800 text-white font-bold py-2 px-4 rounded transition duration-150 ease-in-out transform active:opacity-70 active:outline-none active:outline-yellow-700
+}
+
+.grid-template {
+    @apply grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-[32px];
+}
