@@ -8,7 +8,7 @@ import { FaEye } from "react-icons/fa";
 
 // Variant
 const inputVariant = cva(
-  " w-full lg:h-[40px] h-[32px] text-slate-900 text-center lg:text-[20px] text-[16px] lg:border-2 border border-slate-600 rounded-md"
+  " w-full lg:h-[40px] h-[32px] text-slate-900 text-center lg:text-[20px] text-[16px] lg:border-2 rounded-md"
 );
 
 // Interface
@@ -29,10 +29,10 @@ const AppBaseInput = forwardRef<HTMLInputElement, AppBaseInputProps>(
     }, [see]);
     return (
       <div ref={ref} {...props} className="py-2 my-2 relative">
-        <label className="lg:text-[20px] md:text-[16px] text-[12px] text-black mb-2 font-semibold">
+        <label className="lg:text-[20px] md:text-[16px] text-[12px] text-[#2C3333] mb-2 font-semibold">
           {label}
         </label>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 border-2 border-[#2A2A2A] rounded-md p-1">
           <Field
             name={name}
             type={!see ? type : "text"}

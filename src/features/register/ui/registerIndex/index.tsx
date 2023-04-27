@@ -31,6 +31,7 @@ const RegisterIndex: FC<RegisterIndexProps> = () => {
     username: "",
     password: "",
     images: "",
+    pn: "",
   };
 
   /**

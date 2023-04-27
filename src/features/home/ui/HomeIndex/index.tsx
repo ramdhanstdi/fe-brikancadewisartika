@@ -67,7 +67,7 @@ function LocationMarker() {
 
 const HomeIndex: FC = () => {
   return (
-    <AppBaseCard>
+    <AppBaseCard className="!m-5">
       <div className="w-full flex flex-col justify-center items-center gap-5">
         <AppBaseLabel size={"lg"}>
           MONITORING RM KANCA DEWI SARTIKA

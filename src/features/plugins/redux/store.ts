@@ -2,6 +2,7 @@
 
 import { emptySplitApi } from "@/features/app/redux/app.rtk";
 import { authApi } from "@/features/auth/redux/auth.rtk";
+import { merchantApi } from "@/features/merchant/redux/merchant.rtk";
 import { registerApi } from "@/features/register/redux/register.rtk";
 import { configureStore } from "@reduxjs/toolkit";
 // Redux Persist
@@ -37,7 +38,8 @@ export const store = configureStore({
       middleware_toast,
       emptySplitApi.middleware,
       authApi.middleware,
-      registerApi.middleware
+      registerApi.middleware,
+      merchantApi.middleware
     ),
 });
 

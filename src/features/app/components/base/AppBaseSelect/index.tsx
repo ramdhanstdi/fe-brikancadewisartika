@@ -1,6 +1,6 @@
 import { cn } from "@/features/app/utils/twmerge.utils";
 import { cva, VariantProps } from "class-variance-authority";
-import { Field } from "formik";
+import { ErrorMessage, Field } from "formik";
 import { forwardRef, HTMLAttributes } from "react";
 
 const AppBaseSelectVariants = cva(
@@ -29,9 +29,16 @@ const AppBaseSelect = forwardRef<HTMLSelectElement, AppBaseSelectProps>(
           className={cn(AppBaseSelectVariants({ className }))}
         >
           {option.map((data) => {
-            return <option value={data.value}>{data.label}</option>;
+            return (
+              <option key={data.value} value={data.value}>
+                {data.label}
+              </option>
+            );
           })}
         </Field>
+        <div className="w-full text-red-600 text-left absolute lg:text-[14px] text-[10px] ">
+          <ErrorMessage name={name} />
+        </div>
       </div>
     );
   }

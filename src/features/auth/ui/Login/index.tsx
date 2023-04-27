@@ -70,12 +70,13 @@ const Login: FC<LoginProps> = () => {
                 name="username"
                 label="Username"
                 className="h-16"
-                placeholder="username"
+                placeholder="Your Username"
               />
               <AppBaseInput
                 type="password"
                 name="password"
                 label="Password"
+                placeholder="Your Password"
                 className="h-16"
               />
               <AppBaseButton
