@@ -1,9 +1,20 @@
-import AppBaseLabel from "@/features/app/components/base/AppBaseLabel";
-import { auth_logout } from "@/features/auth/redux/slice.auth";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useCallback } from "react";
+// React
+import { useCallback } from "react";
+
+// React Redux
 import { useDispatch } from "react-redux";
+
+// Next
+import Link from "next/link";
+
+// Component
+import { AppBaseLabel } from "@/features/app/components/base";
+
+// Slice
+import { auth_logout } from "@/features/auth/redux/slice.auth";
+
+// Hooks
+import { useRouter } from "next/navigation";
 type Props = {
   open: boolean;
   setOpen(open: boolean): void;
@@ -13,7 +24,7 @@ const Sidebar = ({ open }: Props) => {
   const router = useRouter();
   const logout = useCallback(() => {
     dispatch(auth_logout());
-    router.push("/");
+    router.push("/auth/login");
   }, [dispatch]);
   return (
     <div
@@ -49,7 +60,7 @@ const Sidebar = ({ open }: Props) => {
                 Data List
               </AppBaseLabel>
             </Link>
-            <Link href="/List">
+            <Link href="/register">
               <AppBaseLabel
                 size={"md"}
                 className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"

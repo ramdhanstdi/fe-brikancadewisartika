@@ -1,10 +1,13 @@
 import { FC } from "react";
 import { validationLogin } from "./schema.yup";
 import { Formik, Form } from "formik";
-import AppBaseInput from "@/features/app/components/base/AppBaseInput";
-import AppBaseButton from "@/features/app/components/base/AppBaseButton";
+import {
+  AppBaseButton,
+  AppBaseInput,
+  AppBaseLabel,
+} from "@/features/app/components/base";
 import Image from "next/image";
-import AppBaseLabel from "@/features/app/components/base/AppBaseLabel";
+
 import { useAuth } from "../../hooks/auth.hooks";
 import { useDispatch } from "react-redux";
 import { set_auth } from "../../redux/slice.auth";
@@ -41,7 +44,7 @@ const Login: FC<LoginProps> = () => {
 
   return (
     <div className="grid-template items-center md:h-[96vh]">
-      <div className="col-span-4 lg:order-1 order-2 p-2">
+      <div className="col-span-4 lg:order-1 order-2 lg:p-10 p-2">
         <AppBaseLabel
           size={"lg"}
           className="font-bold flex flex-col justify-center items-center gap-4"
@@ -67,6 +70,7 @@ const Login: FC<LoginProps> = () => {
                 name="username"
                 label="Username"
                 className="h-16"
+                placeholder="username"
               />
               <AppBaseInput
                 type="password"

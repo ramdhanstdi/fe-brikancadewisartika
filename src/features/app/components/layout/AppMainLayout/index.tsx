@@ -20,7 +20,7 @@ const AppMainLayout: FC<AppMainLayoutProps> = ({ children }) => {
         <div className="md:col-span-2 ">
           <Sidebar open={showSideBar} />
         </div>
-        <div className="mt-20 lg:col-span-10 md:col-span-6 col-span-4 ">
+        <div className="md:mt-20 mt-10 lg:col-span-10 md:col-span-6 col-span-4 ">
           {children}
         </div>
       </div>

@@ -1,8 +1,7 @@
 // RTK
-
 import { emptySplitApi } from "@/features/app/redux/app.rtk";
 
-const authApi = emptySplitApi.injectEndpoints({
+export const authApi = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     auth_login: builder.mutation({
       query: ({ body: values }) => ({

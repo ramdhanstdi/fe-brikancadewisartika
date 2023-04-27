@@ -1,11 +1,15 @@
 "use client";
+
+// React
 import { FC } from "react";
-import "leaflet/dist/leaflet.css";
-import { Icon } from "leaflet";
 
 // Leaflet
+import { Icon } from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import AppBaseLabel from "@/features/app/components/base/AppBaseLabel";
+import "leaflet/dist/leaflet.css";
+
+// Component
+import { AppBaseCard, AppBaseLabel } from "@/features/app/components/base";
 
 function LocationMarker() {
   const DATA_DUMMY = [
@@ -63,20 +67,26 @@ function LocationMarker() {
 
 const HomeIndex: FC = () => {
   return (
-    <div className="w-full flex flex-col justify-center items-center">
-      <AppBaseLabel size={"lg"} className="mx-5">
-        MONITORING RM KANCA DEWI SARTIKA
-      </AppBaseLabel>
-      <div className="lg:w-[1000px] md:w-[700px] w-[400px] ">
-        <MapContainer center={[-6.9, 107.58]} zoom={13} scrollWheelZoom={true}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <LocationMarker />
-        </MapContainer>
+    <AppBaseCard>
+      <div className="w-full flex flex-col justify-center items-center gap-5">
+        <AppBaseLabel size={"lg"}>
+          MONITORING RM KANCA DEWI SARTIKA
+        </AppBaseLabel>
+        <div className="xl:w-[1200px] lg:w-[1000px] md:w-[500px] w-[350px] ">
+          <MapContainer
+            center={[-6.9, 107.58]}
+            zoom={13}
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <LocationMarker />
+          </MapContainer>
+        </div>
       </div>
-    </div>
+    </AppBaseCard>
   );
 };
 

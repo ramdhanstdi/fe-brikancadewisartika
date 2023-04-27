@@ -32,4 +32,4 @@ const AppBaseLabel = forwardRef<HTMLParagraphElement, AppBaseLabelProps>(
 
 AppBaseLabel.displayName = "AppBaseLabel";
 
-export default AppBaseLabel;
+export { AppBaseLabel };

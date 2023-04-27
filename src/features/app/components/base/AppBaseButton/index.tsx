@@ -52,4 +52,4 @@ const AppBaseButton = forwardRef<HTMLButtonElement, AppBaseButtonProps>(
   }
 );
 
-export default AppBaseButton;
+export { AppBaseButton };
