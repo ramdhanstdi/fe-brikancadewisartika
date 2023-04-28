@@ -24,6 +24,7 @@ const AppPageGuard = <P extends PageProps>(
   WrappedComponent: ComponentType<P>
 ): FC<P> => {
   const AuthenticatedComponent: FC<P> = (props) => {
+    let role = "";
     const dispatch = useDispatch();
     const router = useRouter();
     const isAuthenticated = getCookie("token"); // Check if token exists
@@ -40,9 +41,10 @@ const AppPageGuard = <P extends PageProps>(
         dispatch(auth_logout());
         router.push("/auth/login");
       }
+      role = decoded.role;
     }
 
-    return <WrappedComponent {...props} />;
+    return <WrappedComponent {...props} role={role} />;
   };
 
   AuthenticatedComponent.displayName = `withAuth(${

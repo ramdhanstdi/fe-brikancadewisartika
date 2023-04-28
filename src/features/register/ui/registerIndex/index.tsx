@@ -54,7 +54,7 @@ const RegisterIndex: FC<RegisterIndexProps> = () => {
    *
    * @return Promise {void}
    */
-  const onSubmit = (values: typeof initialValues) => {
+  const onSubmit = async (values: typeof initialValues, { resetForm }) => {
     if (image) {
       const formData = new FormData();
       formData.append("images", image);
@@ -62,7 +62,8 @@ const RegisterIndex: FC<RegisterIndexProps> = () => {
       formData.append("pn", values.pn);
       formData.append("username", values.username);
       formData.append("password", values.password);
-      register({ body: formData }).unwrap();
+      await register({ body: formData }).unwrap();
+      resetForm();
     }
   };
   return (

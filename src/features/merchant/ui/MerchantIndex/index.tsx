@@ -66,7 +66,7 @@ const MerchantIndex: FC = () => {
    *
    * @return {void}
    */
-  const onSubmitForm = (values: typeof initialValues) => {
+  const onSubmitForm = async (values: typeof initialValues, { resetForm }) => {
     if (image) {
       const formData = new FormData();
       formData.append("images", image);
@@ -80,7 +80,8 @@ const MerchantIndex: FC = () => {
       formData.append("visit_date", dateVisit.getTime());
       formData.append("realitaion_date", dateRealisation.getTime());
 
-      sendMerchant({ body: formData }).unwrap();
+      await sendMerchant({ body: formData }).unwrap();
+      resetForm();
     }
   };
 

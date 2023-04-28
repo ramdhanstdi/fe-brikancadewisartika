@@ -11,7 +11,14 @@ export const merchantApi = emptySplitApi.injectEndpoints({
         body: values,
       }),
     }),
+    monitoring_merchant: builder.query({
+      query: ({ params }) => ({
+        url: `/merchant/monitoring`,
+        params,
+      }),
+    }),
   }),
 });
 
-export const { useCreate_merchantMutation } = merchantApi;
+export const { useCreate_merchantMutation, useLazyMonitoring_merchantQuery } =
+  merchantApi;

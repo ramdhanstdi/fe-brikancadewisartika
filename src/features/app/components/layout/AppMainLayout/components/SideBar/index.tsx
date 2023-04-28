@@ -15,11 +15,22 @@ import { auth_logout } from "@/features/auth/redux/slice.auth";
 
 // Hooks
 import { useRouter } from "next/navigation";
+import {
+  FaDesktop,
+  FaDoorOpen,
+  FaListAlt,
+  FaOutdent,
+  FaPencilAlt,
+  FaPersonBooth,
+  FaUserAlt,
+} from "react-icons/fa";
+
 type Props = {
   open: boolean;
   setOpen(open: boolean): void;
+  role: number;
 };
-const Sidebar = ({ open }: Props) => {
+const Sidebar = ({ open, role }: Props) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const logout = useCallback(() => {
@@ -36,44 +47,52 @@ const Sidebar = ({ open }: Props) => {
         {/* nav items */}
         <div className="py-2 flex flex-col h-[88vh] justify-between mt-4 p-4">
           <div className="flex flex-col gap-4">
-            <Link href="/">
+            <Link className={`${role === 1 ? "block" : "hidden"}`} href="/">
               <AppBaseLabel
                 size={"md"}
-                className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+                className="item-center border-b-2 border-indigo-600 flex gap-3  hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
               >
+                <FaDesktop size={24} />
                 Monitoring
               </AppBaseLabel>
             </Link>
             <Link href="/inputdata">
               <AppBaseLabel
                 size={"md"}
-                className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+                className="item-center border-b-2 border-indigo-600 flex gap-3 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
               >
+                <FaPencilAlt size={24} />
                 Input Data
               </AppBaseLabel>
             </Link>
             <Link href="/List">
               <AppBaseLabel
                 size={"md"}
-                className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+                className="item-center border-b-2 border-indigo-600 flex gap-3 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
               >
+                <FaListAlt size={24} />
                 Data List
               </AppBaseLabel>
             </Link>
-            <Link href="/register">
+            <Link
+              className={`${role === 1 ? "block" : "hidden"}`}
+              href="/register"
+            >
               <AppBaseLabel
                 size={"md"}
-                className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+                className="item-center border-b-2 border-indigo-600 flex gap-3 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
               >
+                <FaUserAlt size={24} />
                 Register Account
               </AppBaseLabel>
             </Link>
           </div>
           <AppBaseLabel
             size={"md"}
-            className="bg-indigo-600 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+            className="item-center bg-indigo-600 flex gap-3 hover:bg-indigo-200 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
             onClick={logout}
           >
+            <FaDoorOpen size={24} />
             Logout
           </AppBaseLabel>
         </div>
