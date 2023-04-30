@@ -3,7 +3,7 @@ import { FaBars } from "react-icons/fa";
 
 const Navbar = ({ onMenuButtonClick }) => {
   return (
-    <nav className="bg-white text-zinc-700 flex items-center w-full fixed z-10 px-12 -mt-4 shadow-sm h-20">
+    <nav className="bg-white text-zinc-700 flex items-center w-full fixed z-10 px-12 -mt-4 shadow-md h-20">
       <div className="w-[100px]">
         <img src="/images/logo.png" alt="logo" />
       </div>

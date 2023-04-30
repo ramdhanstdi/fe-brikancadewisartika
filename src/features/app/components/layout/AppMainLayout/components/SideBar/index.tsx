@@ -19,9 +19,7 @@ import {
   FaDesktop,
   FaDoorOpen,
   FaListAlt,
-  FaOutdent,
   FaPencilAlt,
-  FaPersonBooth,
   FaUserAlt,
 } from "react-icons/fa";
 
@@ -39,7 +37,7 @@ const Sidebar = ({ open, role }: Props) => {
   }, [dispatch]);
   return (
     <div
-      className={`flex flex-col justify-between bg-indigo-700 text-zinc-50 md:w-full md:sticky md:top-16 md:z-0 top-0 z-20 fixed md:h-[100vh] h-full w-[300px] transition-transform .3s ease-in-out md:translate-x-0 ${
+      className={`shadow-md flex flex-col justify-between bg-indigo-700 text-zinc-50 md:w-full md:sticky md:top-16 md:z-0 top-0 z-20 fixed md:h-[100vh] h-full w-[300px] transition-transform .3s ease-in-out md:translate-x-0 ${
         open ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -65,7 +63,7 @@ const Sidebar = ({ open, role }: Props) => {
                 Input Data
               </AppBaseLabel>
             </Link>
-            <Link href="/List">
+            <Link href="/list">
               <AppBaseLabel
                 size={"md"}
                 className="item-center border-b-2 border-indigo-600 flex gap-3 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"

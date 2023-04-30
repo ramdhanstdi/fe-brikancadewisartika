@@ -50,7 +50,7 @@ const HomeIndex: FC = () => {
   return (
     <AppBaseCard className="!m-5">
       <div className="w-full flex flex-col justify-center items-center gap-5">
-        <AppBaseLabel size={"lg"}>
+        <AppBaseLabel size={"lg"} className="font-bold text-[#2A2A2A]">
           MONITORING RM KANCA DEWI SARTIKA
         </AppBaseLabel>
         <div className="xl:w-[1200px] lg:w-[1000px] md:w-[500px] w-[350px] ">

@@ -11,7 +11,6 @@ import { Navbar, Sidebar } from "./components";
 
 interface AppMainLayoutProps {
   children: ReactNode;
-  role: number;
 }
 
 const AppMainLayout: FC<AppMainLayoutProps> = ({ children, role }) => {
@@ -27,7 +26,7 @@ const AppMainLayout: FC<AppMainLayoutProps> = ({ children, role }) => {
         <div className="md:col-span-2 ">
           <Sidebar role={role} open={showSideBar} />
         </div>
-        <div className="md:mt-20 mt-10 lg:col-span-10 md:col-span-6 col-span-4 ">
+        <div className="md:mt-20 mt-10 lg:col-span-10 md:col-span-6 col-span-4 lg:-ml-6">
           {children}
         </div>
       </div>

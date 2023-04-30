@@ -2,7 +2,7 @@ import { cn } from "@/features/app/utils/twmerge.utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef, HTMLAttributes } from "react";
 
-const AppBaseLabelVariant = cva("w-full text-center  ", {
+const AppBaseLabelVariant = cva("text-center  ", {
   variants: {
     size: {
       lg: "lg:text-[24px] md:text-[20px] text-[16px]",

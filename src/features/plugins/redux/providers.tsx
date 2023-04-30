@@ -15,7 +15,9 @@ export const Providers: FC<ProvidersProps> = ({ children }) => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         {children}
-        <Toaster />
+        <Toaster
+          toastOptions={{ style: { height: "60px", fontSize: "24px" } }}
+        />
       </PersistGate>
     </Provider>
   );

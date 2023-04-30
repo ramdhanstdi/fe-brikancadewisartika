@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { forwardRef, HTMLAttributes } from "react";
 
 const AppBaseCardVariants = cva(
-  " bg-slate-200 lg:p-10 p-5 lg:m-10 m-5  rounded-md"
+  " bg-slate-200 lg:p-5 p-3 lg:m-5 m-3  rounded-md shadow-md"
 );
 interface AppBaseCardProps
   extends HTMLAttributes<AppBaseCardProps>,
