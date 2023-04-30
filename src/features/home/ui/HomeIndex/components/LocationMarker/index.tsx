@@ -10,11 +10,12 @@ const LocationMarker = ({ marker }) => {
       iconUrl: "/images/location.png",
     });
     return (
-      <Marker position={[data.lat, data.lng]} icon={customIcon}>
+      <Marker key={data.id} position={[data.lat, data.lng]} icon={customIcon}>
         <Popup>
-          <div className="text-[16px] font-bold">
-            {data.profile.profile[0].fullname}
+          <div className="text-[14px] font-bold">
+            Merchant: {data.name_merchant}
           </div>
+          RM: {data.profile.profile[0].fullname}
         </Popup>
       </Marker>
     );

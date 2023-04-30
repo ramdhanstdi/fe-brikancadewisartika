@@ -27,7 +27,11 @@ import { LocationMarker } from "./components";
 import { useMerchant } from "../../hooks/merchant.hooks";
 
 // Constant
-import { optionConclustion, optionRating } from "../../constants";
+import {
+  optionConclustion,
+  optionRating,
+  optioGrupArea,
+} from "../../constants";
 
 const MerchantIndex: FC = () => {
   const { merchat_isLoading, sendMerchant } = useMerchant();
@@ -41,6 +45,7 @@ const MerchantIndex: FC = () => {
 
   const initialValues = {
     conclusion: "",
+    grup_area: "",
     rating: "",
     dateVisit: "",
     dataRealisation: "",
@@ -70,6 +75,7 @@ const MerchantIndex: FC = () => {
     if (image) {
       const formData = new FormData();
       formData.append("images", image);
+      formData.append("images", values.grup_area);
       formData.append("name_merchant", values.name_merchant);
       formData.append("category", values.category);
       formData.append("address", values.address);
@@ -152,6 +158,11 @@ const MerchantIndex: FC = () => {
                 name="rating"
                 label="Pilih Rating Bintang"
                 option={optionRating}
+              />
+              <AppBaseSelect
+                name="grup_area"
+                label="Pilih Grup Area"
+                option={optioGrupArea}
               />
               <AppBaseDatePicker
                 label="Tanggal Kunjungan"
