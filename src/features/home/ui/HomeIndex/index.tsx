@@ -18,9 +18,18 @@ import { LocationMarker } from "./components";
 // Custom Hooks
 import { useMerchant } from "@/features/merchant/hooks/merchant.hooks";
 
+// Cookies
+import { getCookie } from "cookies-next";
+
+// Jwt
+import jwt_decode from "jwt-decode";
+import { useRouter } from "next/navigation";
+
 const HomeIndex: FC = () => {
-  const { getMonitoring, monitoring_isLoading, data_monitoring } =
-    useMerchant();
+  const token = getCookie("token");
+  const router = useRouter();
+  const decoded = jwt_decode(token);
+  const { getMonitoring, data_monitoring } = useMerchant();
 
   const [dateMonitoriong, setDateMonitoring] = useState(new Date());
   /**
@@ -45,6 +54,9 @@ const HomeIndex: FC = () => {
 
   useEffect(() => {
     getData();
+    if (decoded.role === 0) {
+      router.push("/list");
+    }
   }, [getData]);
 
   return (

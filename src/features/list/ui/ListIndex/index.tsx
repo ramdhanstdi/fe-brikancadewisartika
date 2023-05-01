@@ -1,15 +1,24 @@
 "use client";
+// React
+import { FC, useCallback, useEffect, useState } from "react";
 
+// Components
 import {
   AppBaseCard,
   AppBaseDatePicker,
   AppBaseLabel,
 } from "@/features/app/components";
-import { FC, useCallback, useEffect, useState } from "react";
 import { Table } from "./components";
 
+// Custom hooks
 import { useMerchant } from "@/features/merchant/hooks/merchant.hooks";
+
+// Fa
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+// Cookies
+import { getCookie } from "cookies-next";
+// Jwt
+import jwt_decode from "jwt-decode";
 
 interface ListIndexProps {}
 
@@ -18,6 +27,8 @@ const ListIndex: FC<ListIndexProps> = () => {
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   const { getList, listData_merchant } = useMerchant();
+  const token = getCookie("token");
+  const decoded = jwt_decode(token);
 
   /**
    * @description handle get data list
@@ -62,7 +73,7 @@ const ListIndex: FC<ListIndexProps> = () => {
       <AppBaseLabel size={"lg"} className="font-bold mb-7">
         List Data Merchant
       </AppBaseLabel>
-      <div className="flex justify-between items-end ml-5">
+      <div className="md:flex-row flex-col flex justify-between md:items-end ml-5">
         <div className="flex gap-3 items-start">
           <AppBaseLabel size={"md"}>
             Menampilkan: {listData_merchant?.results.length}
@@ -72,7 +83,7 @@ const ListIndex: FC<ListIndexProps> = () => {
           </AppBaseLabel>
         </div>
 
-        <div className="flex gap-5 items-center">
+        <div className="md:flex-row flex-col flex gap-5 md:items-center">
           <AppBaseDatePicker
             label="Dari Tanggal"
             date={fromDate}
@@ -89,14 +100,20 @@ const ListIndex: FC<ListIndexProps> = () => {
       </div>
       <div className="m-3 p-5 bg-slate-300 rounded-md flex font-bold">
         <div className="text-[16px] w-[165px]">Grup Area</div>
-        <div className="text-[16px] w-[165px]">Nama RM</div>
+        <div
+          className={`${
+            decoded.role === 1 ? "block" : "hidden"
+          } text-[16px] w-[165px]`}
+        >
+          Nama RM
+        </div>
         <div className="text-[16px] w-[180px]">Nama Merchant</div>
         <div className="text-[16px] w-[200px]">Tanggal Kunjungan</div>
         <div className="text-[16px] w-[190px]">Alamat Merchant</div>
         <div className="text-[16px] w-[175px]">Hasil Kunjungan</div>
         <div className="text-[16px] w-[200px]">Realisasi</div>
       </div>
-      <Table data={listData_merchant?.results} />
+      <Table role={decoded.role} data={listData_merchant?.results} />
       <div className="flex gap-3 ml-3">
         <button
           onClick={() => {

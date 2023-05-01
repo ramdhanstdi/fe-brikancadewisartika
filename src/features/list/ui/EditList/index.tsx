@@ -4,7 +4,7 @@
 import { FC, useEffect, useState } from "react";
 
 // Schema Yup
-import { validationInputData } from "./schema.map";
+import { validationInputData } from "@/features/merchant/ui/MerchantIndex/schema.map";
 
 // Formik
 import { Form, Formik } from "formik";
@@ -21,20 +21,26 @@ import {
   AppBaseLabel,
   AppBaseSelect,
 } from "@/features/app/components";
-import { LocationMarker } from "./components";
+import { LocationMarker } from "@/features/merchant/ui/MerchantIndex/components";
 
 // Custom Hooks
-import { useMerchant } from "../../hooks/merchant.hooks";
+import { useMerchant } from "@/features/merchant/hooks/merchant.hooks";
 
 // Constant
 import {
   optionConclustion,
   optionRating,
   optioGrupArea,
-} from "../../constants";
+} from "@/features/merchant/constants";
 
-const MerchantIndex: FC = () => {
-  const { merchat_isLoading, sendMerchant } = useMerchant();
+// next
+import { useSearchParams, useRouter } from "next/navigation";
+
+const EditListIndex: FC = () => {
+  const navigation = useSearchParams();
+  const { push } = useRouter();
+  const dataQueryParam = new URLSearchParams(navigation).get("data");
+  const { updateMerchant, update_loading } = useMerchant();
   const [position, setPosition] = useState(null);
   const [newLat, setNewLat] = useState(-6.9004405);
   const [newLng, setNewLng] = useState(107.5887222);
@@ -43,19 +49,7 @@ const MerchantIndex: FC = () => {
   const [dateRealisation, setDateRealisation] = useState(new Date());
   const [dateVisit, setDateVisit] = useState(new Date());
 
-  const initialValues = {
-    conclusion: "",
-    grup_area: "",
-    rating: "",
-    dateVisit: "",
-    dataRealisation: "",
-    name_merchant: "",
-    category: "",
-    address: "",
-    lng: "",
-    lat: "",
-    images: "",
-  };
+  const initialValues = JSON.parse(dataQueryParam);
 
   /**
    * @description handle change image
@@ -71,9 +65,10 @@ const MerchantIndex: FC = () => {
    *
    * @return {void}
    */
-  const onSubmitForm = async (values: typeof initialValues, { resetForm }) => {
+  const onSubmitForm = async (values: typeof initialValues) => {
     if (image) {
       const formData = new FormData();
+      formData.append("id", initialValues.id);
       formData.append("images", image);
       formData.append("grup_area", values.grup_area);
       formData.append("name_merchant", values.name_merchant);
@@ -86,8 +81,8 @@ const MerchantIndex: FC = () => {
       formData.append("visit_date", dateVisit.getTime());
       formData.append("realitaion_date", dateRealisation.getTime());
 
-      await sendMerchant({ body: formData }).unwrap();
-      resetForm();
+      await updateMerchant({ body: formData }).unwrap();
+      push("/list");
     }
   };
 
@@ -179,7 +174,7 @@ const MerchantIndex: FC = () => {
             </div>
             <div className="flex flex-col items-center gap-5 justify-center order-1 lg:order-2 lg:col-start-8 col-span-4 ">
               <AppBaseLabel color="text-[#2C3333]" size={"lg"}>
-                Masukan foto di bawah ini klik pilih file
+                Upload Ulang foto
               </AppBaseLabel>
               <div className="w-[180px] h-[320px] flex items-center bg-slate-300">
                 <img src={imageURL || "/images/defaultphoto.jpg"} alt="photo" />
@@ -194,7 +189,7 @@ const MerchantIndex: FC = () => {
                 type="submit"
                 variant="confirm"
                 className="lg:mt-6 md:mt-5 mt-4 h-16 flex items-center"
-                isLoading={merchat_isLoading}
+                isLoading={update_loading}
               >
                 Simpan
               </AppBaseButton>
@@ -206,4 +201,4 @@ const MerchantIndex: FC = () => {
   );
 };
 
-export default MerchantIndex;
+export default EditListIndex;

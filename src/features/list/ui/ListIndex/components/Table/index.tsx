@@ -2,8 +2,9 @@
 
 import { cn } from "@/features/app/utils/twmerge.utils";
 import { cva, VariantProps } from "class-variance-authority";
+import Link from "next/link";
 import { forwardRef, HTMLAttributes, useState } from "react";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaPencilAlt } from "react-icons/fa";
 import { PopUpDetail } from "../PopUpDetail";
 
 const TableVariants = cva("w-full h-full");
@@ -34,16 +35,31 @@ interface TableProps
       ];
     };
   }[];
+  role: number;
 }
 
 const Table = forwardRef<HTMLTableElement, TableProps>(
-  ({ className, data }, ref) => {
+  ({ className, data, role }, ref) => {
     const [isOpen, setOpen] = useState(false);
+    const [detail, setDetail] = useState();
+
+    /**
+     * @description handle close Modal
+     *
+     * @return {void}
+     */
     const closeModal = () => {
       setOpen(false);
     };
-    const openModal = () => {
+
+    /**
+     * @description handle open modal.
+     *
+     * @return {void}
+     */
+    const openModal = (value) => {
       setOpen(true);
+      setDetail(value);
     };
     return (
       <>
@@ -57,7 +73,11 @@ const Table = forwardRef<HTMLTableElement, TableProps>(
                 <div className="text-[16px] w-[175px]">
                   {column.grup_area || "Kosong"}
                 </div>
-                <div className="text-[16px] w-[175px]">
+                <div
+                  className={`${
+                    role === 1 ? "block" : "hidden"
+                  } text-[16px] w-[165px]`}
+                >
                   {column.profile.profile[0].fullname}
                 </div>
                 <div className="text-[16px] w-[185px]">
@@ -68,15 +88,27 @@ const Table = forwardRef<HTMLTableElement, TableProps>(
                 </div>
                 <div className="text-[16px] w-[200px]">{column.address}</div>
                 <div className="text-[16px] w-[175px]">{column.conclusion}</div>
-                <div className="text-[16px] w-[200px]">
+                <div className="text-[16px] w-[180px]">
                   {new Date(column.realitaion_date).toLocaleDateString("id-ID")}
                 </div>
-                <button
-                  className="bg-slate-300 rounded-md p-2 hover:bg-slate-400 disabled:bg-slate-500 disabled:cursor-not-allowed active:bg-slate-500"
-                  onClick={openModal}
-                >
-                  <FaEye size={16} />
-                </button>
+                {role === 1 ? (
+                  <button
+                    className="bg-slate-300 rounded-md p-2 hover:bg-slate-400 disabled:bg-slate-500 disabled:cursor-not-allowed active:bg-slate-500"
+                    onClick={() => openModal(column)}
+                  >
+                    <FaEye size={16} />
+                  </button>
+                ) : (
+                  <Link
+                    href={{
+                      pathname: "/list/edit",
+                      query: { data: JSON.stringify(column) },
+                    }}
+                    className="bg-slate-300 rounded-md p-2 hover:bg-slate-400 disabled:bg-slate-500 disabled:cursor-not-allowed active:bg-slate-500"
+                  >
+                    <FaPencilAlt size={16} />
+                  </Link>
+                )}
               </div>
             ))
           ) : (
@@ -85,7 +117,7 @@ const Table = forwardRef<HTMLTableElement, TableProps>(
             </div>
           )}
         </div>
-        <PopUpDetail isOpen={isOpen} closeModal={closeModal} />
+        <PopUpDetail isOpen={isOpen} closeModal={closeModal} detail={detail} />
       </>
     );
   }

@@ -28,6 +28,7 @@ const AppBaseSelect = forwardRef<HTMLSelectElement, AppBaseSelectProps>(
           id={name}
           className={cn(AppBaseSelectVariants({ className }))}
         >
+          <option>{label}</option>
           {option.map((data) => {
             return (
               <option key={data.value} value={data.value}>

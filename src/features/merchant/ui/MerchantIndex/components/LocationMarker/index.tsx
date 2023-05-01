@@ -36,7 +36,7 @@ const LocationMarker = ({
 
   const customIcon = new Icon({
     iconSize: [30, 45],
-    iconUrl: "./images/location.png",
+    iconUrl: "/images/location.png",
   });
 
   return position === null ? null : (

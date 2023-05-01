@@ -23,6 +23,13 @@ export const merchantApi = emptySplitApi.injectEndpoints({
         params,
       }),
     }),
+    update_merchant: builder.mutation({
+      query: ({ body: values }) => ({
+        url: "/merchant/edit",
+        method: "POST",
+        body: values,
+      }),
+    }),
   }),
 });
 
@@ -31,4 +38,5 @@ export const {
   useLazyMonitoring_merchantQuery,
   useLazyList_merchantQuery,
   useList_merchantQuery,
+  useUpdate_merchantMutation,
 } = merchantApi;
