@@ -7,7 +7,7 @@ const LocationMarker = ({ marker }) => {
   return marker.map((data) => {
     const customIcon = new Icon({
       iconSize: [30, 45],
-      iconUrl: "/images/location.png",
+      iconUrl: data.profile.profile[0].image_url,
     });
     return (
       <Marker key={data.id} position={[data.lat, data.lng]} icon={customIcon}>

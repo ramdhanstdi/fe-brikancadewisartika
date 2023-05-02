@@ -26,7 +26,7 @@ const PopUpDetail: FC<PopUpDetailProps> = ({ isOpen, closeModal, detail }) => {
                   </button>
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <img src="/images/login.svg" alt="detail" />
+                  <img src={detail.url_image} alt="detail" />
                   <div className="text-[20px]">
                     Nama Merchant: {detail.name_merchant}
                   </div>
