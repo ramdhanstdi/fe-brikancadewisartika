@@ -1,24 +1,27 @@
 export const optionConclustion = [
-  { value: "EDC", label: "Berminat EDC" },
-  { value: "QRIS", label: "Berminat QRIS" },
-  { value: "EDC&QRIS", label: "Berminat EDC & QRIS" },
-  { value: "FollowUp", label: "Perlu Follow Up Kembali" },
+  { value: "Berminat EDC", label: "Berminat EDC" },
+  { value: "Berminat QRIS", label: "Berminat QRIS" },
+  { value: "Berminat EDC & QRIS", label: "Berminat EDC & QRIS" },
+  { value: "Perlu Follow Up Kembali", label: "Perlu Follow Up Kembali" },
 ];
 
 export const optionRating = [
-  { value: "SangatRamai", label: "Sangat Ramai" },
+  { value: "Sangat Ramai", label: "Sangat Ramai" },
   { value: "Ramai", label: "Ramai" },
-  { value: "CukupRamai", label: "Cukup Ramai" },
-  { value: "KurangRamai", label: "Kurang Ramai" },
-  { value: "TidakRamai", label: "Tidak Ramai" },
+  { value: "Cukup Ramai", label: "Cukup Ramai" },
+  { value: "Kurang Ramai", label: "Kurang Ramai" },
+  { value: "Tidak Ramai", label: "Tidak Ramai" },
 ];
 
 export const optioGrupArea = [
-  { value: "dalem", label: "Dalem Kaum & Plaza Parahyangan" },
-  { value: "pungkur", label: "Pungkur" },
-  { value: "balong", label: "BalongGede & Dewi Sartika" },
-  { value: "lengkong", label: "Lengkong Besar" },
-  { value: "otista", label: "Otista" },
-  { value: "kepatihan", label: "Kepatihan & Kings" },
-  { value: "merdeka", label: "JL. Merdeka & Dipatiukur" },
+  {
+    value: "Dalem Kaum & Plaza Parahyangan",
+    label: "Dalem Kaum & Plaza Parahyangan",
+  },
+  { value: "Pungkur", label: "Pungkur" },
+  { value: "BalongGede & Dewi Sartika", label: "BalongGede & Dewi Sartika" },
+  { value: "Lengkong Besar", label: "Lengkong Besar" },
+  { value: "Otista", label: "Otista" },
+  { value: "Kepatihan & Kings", label: "Kepatihan & Kings" },
+  { value: "JL. Merdeka & Dipatiukur", label: "JL. Merdeka & Dipatiukur" },
 ];

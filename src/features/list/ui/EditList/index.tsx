@@ -42,15 +42,19 @@ const EditListIndex: FC = () => {
   const dataQueryParam = new URLSearchParams(navigation).get("data");
   const { updateMerchant, update_loading } = useMerchant();
   const [position, setPosition] = useState(null);
-  const [newLat, setNewLat] = useState(-6.9004405);
-  const [newLng, setNewLng] = useState(107.5887222);
   const [image, setImage] = useState();
   const [imageURL, setImageUrl] = useState("");
-  const [dateRealisation, setDateRealisation] = useState(new Date());
-  const [dateVisit, setDateVisit] = useState(new Date());
 
   const initialValues = JSON.parse(dataQueryParam);
 
+  const [dateVisit, setDateVisit] = useState(
+    new Date(initialValues?.visit_date)
+  );
+  const [dateRealisation, setDateRealisation] = useState(
+    new Date(initialValues?.realitaion_date)
+  );
+  const [newLat, setNewLat] = useState(initialValues.lat);
+  const [newLng, setNewLng] = useState(initialValues.lng);
   /**
    * @description handle change image
    *
