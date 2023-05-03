@@ -54,7 +54,10 @@ const Sidebar = ({ open, role }: Props) => {
                 Monitoring
               </AppBaseLabel>
             </Link>
-            <Link href="/inputdata">
+            <Link
+              href="/inputdata"
+              className={`${role !== 1 ? "block" : "hidden"}`}
+            >
               <AppBaseLabel
                 size={"md"}
                 className="item-center border-b-2 border-indigo-600 flex gap-3 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"

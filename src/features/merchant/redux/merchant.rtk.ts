@@ -23,6 +23,12 @@ export const merchantApi = emptySplitApi.injectEndpoints({
         params,
       }),
     }),
+    listbyid_merchant: builder.query({
+      query: ({ params }) => ({
+        url: "/merchant/listbyid",
+        params,
+      }),
+    }),
     update_merchant: builder.mutation({
       query: ({ body: values }) => ({
         url: "/merchant/edit",
@@ -39,4 +45,5 @@ export const {
   useLazyList_merchantQuery,
   useList_merchantQuery,
   useUpdate_merchantMutation,
+  useLazyListbyid_merchantQuery,
 } = merchantApi;

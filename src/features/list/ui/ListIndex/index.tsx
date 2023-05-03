@@ -26,7 +26,8 @@ const ListIndex: FC<ListIndexProps> = () => {
   const [page, setPage] = useState(0);
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
-  const { getList, listData_merchant } = useMerchant();
+  const { getList, listData_merchant, getListById, listDatabyId_merchant } =
+    useMerchant();
   const token = getCookie("token");
   const decoded = jwt_decode(token);
 
@@ -36,14 +37,26 @@ const ListIndex: FC<ListIndexProps> = () => {
    * @return {void}
    */
   const getData = useCallback(async () => {
-    await getList({
-      params: {
-        fromDate: fromDate.toISOString(),
-        toDate: toDate.toISOString(),
-        page: page,
-      },
-    }).unwrap();
-  }, [fromDate, getList, page, toDate]);
+    if (decoded.role === 1) {
+      await getList({
+        params: {
+          fromDate: fromDate.toISOString(),
+          toDate: toDate.toISOString(),
+          page: page,
+        },
+      }).unwrap();
+    } else {
+      console.log("harusnya ini");
+
+      await getListById({
+        params: {
+          fromDate: fromDate.toISOString(),
+          toDate: toDate.toISOString(),
+          page: page,
+        },
+      }).unwrap();
+    }
+  }, [decoded.role, fromDate, getList, getListById, page, toDate]);
 
   /**
    * @description handle onChange To Date
@@ -76,10 +89,17 @@ const ListIndex: FC<ListIndexProps> = () => {
       <div className="md:flex-row flex-col flex justify-between md:items-end ml-5">
         <div className="flex gap-3 items-start">
           <AppBaseLabel size={"md"}>
-            Menampilkan: {listData_merchant?.results.length}
+            Menampilkan:{" "}
+            {decoded.role === 1
+              ? listData_merchant?.results.length
+              : listDatabyId_merchant?.results.length || 0}{" "}
           </AppBaseLabel>
           <AppBaseLabel size={"md"}>
-            dari {listData_merchant?.pageInfo.totalData} data
+            dari{" "}
+            {decoded.role === 1
+              ? listData_merchant?.results.length
+              : listDatabyId_merchant?.results.length || 0}{" "}
+            data
           </AppBaseLabel>
         </div>
 
@@ -113,7 +133,14 @@ const ListIndex: FC<ListIndexProps> = () => {
         <div className="text-[16px] w-[175px]">Hasil Kunjungan</div>
         <div className="text-[16px] w-[200px]">Realisasi</div>
       </div>
-      <Table role={decoded.role} data={listData_merchant?.results} />
+      <Table
+        role={decoded.role}
+        data={
+          decoded.role === 1
+            ? listData_merchant?.results
+            : listDatabyId_merchant?.results
+        }
+      />
       <div className="flex gap-3 ml-3">
         <button
           onClick={() => {
