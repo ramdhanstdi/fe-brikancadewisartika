@@ -4,7 +4,6 @@ import axios from "axios";
 import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/router";
 
-const { replace } = useRouter();
 const axiosApiIntances = axios.create({
   baseURL: process.env.REACT_APP_BACK_END_URL,
   headers: {
@@ -36,7 +35,7 @@ axiosApiIntances.interceptors.response.use(
       error.response.data.message === "Token expired"
     ) {
       deleteCookie("token");
-      replace("/auth/login");
+      window.location.href = "/auth/login";
     }
     return Promise.reject(error);
   }
