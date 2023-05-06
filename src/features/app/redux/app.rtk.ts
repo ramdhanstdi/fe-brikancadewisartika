@@ -11,14 +11,18 @@ import { auth_logout } from "@/features/auth/redux/slice.auth";
 
 // Mutex
 import { Mutex } from "async-mutex";
+import { getCookie } from "cookies-next";
 
 const mutex = new Mutex();
+const tokenCookie = getCookie("token");
 
 const baseQuery = fetchBaseQuery({
   credentials: "include",
   baseUrl: process.env.NEXT_PUBLIC_BACKEND_URL,
   mode: "cors",
   prepareHeaders(headers) {
+    const token = JSON.parse(tokenCookie);
+    headers.set("Authorization", `Bearer ${token.token}`);
     return headers;
   },
 });
