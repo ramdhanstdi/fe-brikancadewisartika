@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { deleteCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import { useRouter } from "next/router";
 
 const axiosApiIntances = axios.create({
@@ -13,7 +13,8 @@ const axiosApiIntances = axios.create({
 // Add a request interceptor
 axiosApiIntances.interceptors.request.use(
   (config) => {
-    const token = Cookies.get("token");
+    const tokenCookie = getCookie("token");
+    const token = JSON.parse(tokenCookie);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
