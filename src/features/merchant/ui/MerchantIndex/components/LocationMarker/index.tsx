@@ -39,7 +39,7 @@ const LocationMarker = ({
     iconUrl: "/images/location.png",
   });
 
-  return position === null ? null : (
+  return (
     <Marker
       position={[newLat, newLng]}
       draggable
