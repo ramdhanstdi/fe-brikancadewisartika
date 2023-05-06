@@ -2,12 +2,13 @@
 
 import { Icon } from "leaflet";
 import { Marker, Popup } from "react-leaflet";
+import defaultMap from "../../../../../../../public/images/location.png";
 
 const LocationMarker = ({ marker }) => {
   return marker.map((data) => {
     const customIcon = new Icon({
       iconSize: [30, 45],
-      iconUrl: data.profile.profile[0].image_url,
+      iconUrl: data.profile.profile[0].image_url || defaultMap,
     });
     return (
       <Marker key={data.id} position={[data.lat, data.lng]} icon={customIcon}>
