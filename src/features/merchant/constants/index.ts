@@ -1,4 +1,5 @@
 export const optionConclustion = [
+  { value: "Tidak Berminat EDC/QRIS", label: "Tidak Berminat EDC/QRIS" },
   { value: "Berminat EDC", label: "Berminat EDC" },
   { value: "Berminat QRIS", label: "Berminat QRIS" },
   { value: "Berminat EDC & QRIS", label: "Berminat EDC & QRIS" },

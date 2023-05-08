@@ -26,38 +26,36 @@ import jwt_decode from "jwt-decode";
 import { useRouter } from "next/navigation";
 
 const HomeIndex: FC = () => {
+  // const [dateMonitoriong, setDateMonitoring] = useState(new Date());
   const token = getCookie("token");
   const router = useRouter();
   const decoded = jwt_decode(token);
   const { getMonitoring, data_monitoring } = useMerchant();
 
-  const [dateMonitoriong, setDateMonitoring] = useState(new Date());
   /**
    * @description handle get data monitoring
    *
    * @return {void}
    */
   const getData = useCallback(async () => {
-    await getMonitoring({
-      params: { date: dateMonitoriong.toISOString() },
-    }).unwrap();
-  }, [dateMonitoriong, getMonitoring]);
+    await getMonitoring({}).unwrap();
+  }, [getMonitoring]);
 
   /**
    * @description handle change date
    *
    * @return {void}
    */
-  const onChangeDate = useCallback((date) => {
-    setDateMonitoring(date);
-  }, []);
+  // const onChangeDate = useCallback((date) => {
+  //   setDateMonitoring(date);
+  // }, []);
 
   useEffect(() => {
     getData();
     if (decoded.role === 0) {
       router.push("/list");
     }
-  }, [getData]);
+  }, [decoded.role, getData, router]);
 
   return (
     <AppBaseCard className="!m-5">
@@ -80,12 +78,12 @@ const HomeIndex: FC = () => {
             )}
           </MapContainer>
         </div>
-        <AppBaseDatePicker
+        {/* <AppBaseDatePicker
           label="Pilih Tanggal"
           date={dateMonitoriong}
           name="monitoring"
           onChange={onChangeDate}
-        />
+        /> */}
       </div>
     </AppBaseCard>
   );

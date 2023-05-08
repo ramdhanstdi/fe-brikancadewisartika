@@ -34,7 +34,7 @@ const Sidebar = ({ open, role }: Props) => {
   const logout = useCallback(() => {
     dispatch(auth_logout());
     router.push("/auth/login");
-  }, [dispatch]);
+  }, [dispatch, router]);
   return (
     <div
       className={`shadow-md flex flex-col justify-between bg-indigo-700 text-zinc-50 md:w-full md:sticky md:top-16 md:z-0 top-0 z-20 fixed md:h-[100vh] h-full w-[300px] transition-transform .3s ease-in-out md:translate-x-0 ${
@@ -90,7 +90,7 @@ const Sidebar = ({ open, role }: Props) => {
           </div>
           <AppBaseLabel
             size={"md"}
-            className="item-center bg-indigo-600 flex gap-3 hover:bg-indigo-200 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
+            className="item-center bg-indigo-600 flex gap-3 hover:bg-indigo-200  p-2 hover:text-indigo-900 rounded-md"
             onClick={logout}
           >
             <FaDoorOpen size={24} />
