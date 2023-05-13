@@ -84,7 +84,7 @@ const Sidebar = ({ open, role }: Props) => {
                 className="item-center border-b-2 border-indigo-600 flex gap-3 hover:bg-indigo-200 p-2 hover:text-indigo-900 rounded-md"
               >
                 <FaUserAlt size={24} />
-                Register Account
+                Register Account {""}
               </AppBaseLabel>
             </Link>
           </div>
